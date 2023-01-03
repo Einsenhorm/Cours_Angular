@@ -1,0 +1,78 @@
+<p>premier-composant works!</p>
+
+<h1> Bonjour</h1>
+
+<p>Il y a {{etudiant}} élèves</p>
+<p>le directeur se nomme : {{dir.prenom}}</p>
+<p>l'utilisateur se nomme : {{user.name}}</p>
+<p>son email est : {{user.email}}</p>
+<h1 (click)="afficheMessage('coucou')">Cliquez s'il vous plait</h1>
+<div (click)="afficheMessage2('parent', $event)">
+    Message parent (click here)
+    <span (click)="afficheMessage2('enfant', $event)">Message enfant (or here)</span>
+</div>
+
+<ul *ngIf="8 > 1"> ceci est une liste avec un template qui cache ou non (ngIf)
+    <li>message</li>
+    <li>message</li>
+    <li>message</li>
+</ul>
+
+<ul>
+    <li *ngFor="let valeur of quantites">{{valeur}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let valeur of quantites; let indice=index ">{{indice}} {{valeur}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of users">
+      <p>Id: {{ user.id }}</p>
+      <p>Name: {{ user.name }}</p>
+      <p>Email: {{ user.email }}</p>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let valeur of data">
+        <p>Id: {{ valeur.id }}</p>
+        <p>Name: {{ valeur.name }}</p>
+        <p>Adresse : {{ valeur.address.streetId }}. {{ valeur.address.streetName }}</p>
+    
+        <ul>
+            <li *ngFor="let valeur2 of valeur.projets">
+                <p>Projets</p>
+                <p>Libellé: {{valeur2.libelle}}</p>
+                <p>Description: {{valeur2.description}}</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+// pour faire des if
+<ul>
+    <ng-container *ngFor="let user of users">
+        <li *ngIf="user.id! % 2 == 0; then si else sinon">
+            msg non affiche </li>
+        <ng-template #si>
+            <li class = "classe1">{{user.id}} est pair</li>
+        </ng-template>
+        <ng-template #sinon>
+            <li class = "classe2">{{user.id}} est impair</li>
+        </ng-template>
+    </ng-container>
+</ul>
+<div [ngSwitch]="position">
+    <p *ngSwitchCase="1">Premier</p>
+    <p *ngSwitchCase="2">Second</p>
+    <p *ngSwitchDefault>Pas dans les premiers</p>
+</div>
+
+<div [ngStyle]="{ 'color': 'red', 'fontWeight': 'bold' }">Texte en rouge et gras</div>
+<div class = "classe1">Texte en bleu clair sur fond bleu</div>
+
+<ul *ngFor="let user of users" >
+    <li [ngClass]="user.id! % 2 == 0 ? 'classe1' : 'classe2'">{{user.id}}</li>
+</ul>
+
