@@ -50,6 +50,9 @@
     </li>
 </ul>
 
+<button (click)="goTo()">blah</button>
+<br>
+
 // pour faire des if
 <ul>
     <ng-container *ngFor="let user of users">
@@ -63,6 +66,7 @@
         </ng-template>
     </ng-container>
 </ul>
+
 <div [ngSwitch]="position">
     <p *ngSwitchCase="1">Premier</p>
     <p *ngSwitchCase="2">Second</p>

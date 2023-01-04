@@ -1,0 +1,14 @@
+<p class="liste">formulaire works!</p>
+<form (ngSubmit)="register()">
+    <div class="">
+        <label>Login</label>
+        <input name="login" [(ngModel)]="log">
+        {{log}}
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="pwd">
+        {{pwd}}
+    </div>
+    <button type="submit">Envoyer</button>
+</form>

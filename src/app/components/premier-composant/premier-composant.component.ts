@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../interfaces/user';
+import { Router } from '@angular/router';
+import { User } from '../../interfaces/user';
 
 
 @Component({
@@ -12,6 +13,16 @@ export class PremierComposantComponent {
   dir:any = {prenom:'Adrien' };
   user : User = {id: 1, name: 'Jhon Wick', email: 'jhon.wick@adressebidon.zeuby'};
   // affiche un pop up sur la page web
+  
+
+  // ici on fait l'injection de dep du serv routeur
+  constructor (private router: Router){}
+
+
+  goTo(): void{
+    this.router.navigate(['form']);
+  }
+
   afficheMessage(message: string): void {
     alert("mon message: " +message);
   }
@@ -65,5 +76,8 @@ export class PremierComposantComponent {
   ]
   }]
   position : number= 2;
+
+
+
 
 }
